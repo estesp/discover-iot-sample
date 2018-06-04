@@ -1,0 +1,5 @@
+## define environment variables used by various tools
+export cloudant_url="<YOUR_CLOUDANT_URL>"
+export cloudant_db="<YOUR_CLOUDANT_DB>"
+# used by `ccurl` admin/debug tool
+export COUCH_URL="${cloudant_url}/${cloudant_db}"

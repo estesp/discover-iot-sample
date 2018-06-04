@@ -1,7 +1,7 @@
 // delete all docs in Cloudant
 var Cloudant = require('cloudant')
 
-var dbname = "santana_estes_mqtt_demo";
+var dbname = process.env.cloudant_db;
 Cloudant({url: process.env.cloudant_url}, function(err, cloudant) {
   if (err)
     return console.log('Error connecting to Cloudant account %s: %s', url, err.message)
