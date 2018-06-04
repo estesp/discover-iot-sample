@@ -81,7 +81,7 @@
 				window.iot_host = response.org + ".messaging.internetofthings.ibmcloud.com";
 				window.iot_port = 8883;
 				window.deviceId = prompt("Enter a unique ID for your device containing only letters and numbers:");
-				window.password = prompt("Enter an 8-character password");
+				window.password = "abcd1234"
 				window.iot_clientid = "d:"+response.org+":iot-phone:"+window.deviceId;
 				window.client = new Paho.MQTT.Client(window.iot_host, window.iot_port, window.iot_clientid);
 				registerDevice();
