@@ -1,0 +1,8 @@
+{
+  "views": {
+    "totals": {
+      "map": "function(doc) { if (doc.energyTotal) { emit(parseInt(doc.timestamp, 10), parseFloat(doc.energyTotal), parseInt(doc.devices, 10)); } }",
+      "reduce": "function (keys, values, rereduce) { var sum = 0; for(i=0; i < values.length; i++) { sum = sum + values[i]; } return(sum); }"
+    }
+  }
+}

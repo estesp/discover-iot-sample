@@ -1,0 +1,8 @@
+{
+  "views": {
+    "energySum": {
+      "map": "function(doc) { if (doc.deviceid) { emit(doc.deviceid, parseFloat(doc.energy)); } }",
+      "reduce": "function (keys, values, rereduce) { var sum = 0; for(i=0; i < values.length; i++) { sum = sum + values[i]; } return(sum); }"
+    }
+  }
+}

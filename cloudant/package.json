@@ -1,0 +1,16 @@
+{
+	"name": "delete-docs",
+	"version": "0.0.1",
+	"description": "delete docs",
+	"scripts": {
+		"start": "node delete-all-docs.js"
+	},
+	"dependencies": {
+		"cloudant": "*"
+	},
+	"engines": {
+		"node": "^7.8.0",
+		"npm": "^4.2.0"
+	},
+	"repository": {}
+}
