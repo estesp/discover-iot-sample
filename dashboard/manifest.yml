@@ -1,0 +1,7 @@
+applications:
+- name: vdathens18
+  host: vdathens18
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 512M
