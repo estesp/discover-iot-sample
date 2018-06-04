@@ -1,0 +1,21 @@
+{
+	"name": "vdathens18",
+	"version": "0.0.1",
+	"description": "VoxxedDays Athens 2018 - Dashboard",
+	"scripts": {
+		"start": "node app.js"
+	},
+	"dependencies": {
+		"express": "4.12.x",
+		"cfenv": "1.0.x",
+		"body-parser": "*",
+		"ejs": "*",
+		"cloudant": "*",
+		"express-session": "*"
+	},
+	"engines": {
+		"node": "^7.8.0",
+		"npm": "^4.2.0"
+	},
+	"repository": {}
+}
