@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
 	<title>VoxxedDays Athens 2018: Energy Leaderboard</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
@@ -7,13 +8,13 @@
 	<script src="/js/chartjs-plugin-streaming.min.js"></script>
 	<script src="/js/jquery.min.js"></script>
 	<style>
-	canvas {
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-	}
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
 	</style>
-	<link rel='stylesheet' href='/css/style.css'/>
+	<link rel='stylesheet' href='/css/style.css' />
 </head>
 
 <body>
@@ -24,15 +25,15 @@
 		<canvas id="canvas"></canvas>
 	</div>
 	<script>
-		window.setInterval(function() {
-			ajaxCall("/i/devices", "GET", function(respData) {
+		window.setInterval(function () {
+			ajaxCall("/i/devices", "GET", function (respData) {
 				// build up HTML output
-				var html = "<div class='devicecount'><span class='devicenum'>"+respData.length+"</span> devices connected.</div>\n";
+				var html = "<div class='devicecount'><span class='devicenum'>" + respData.length + "</span> devices connected.</div>\n";
 				html += "<table class='lbtable'>\n";
 				html += "<tr class='lbheader'><td class='headercell'>Device Identifier</td><td class='headercell'>Watts Produced</td></tr>\n";
 				//only show up to top 10
 				var top = Math.min(10, respData.length);
-				for (var i=0; i < top; i++) {
+				for (var i = 0; i < top; i++) {
 					html += "<tr class='lbentry'>\n";
 					html += "<td class='entrylabel'>" + respData[i].key + "</td>\n";
 					html += "<td class='entrytotal'>" + respData[i].value.toFixed(2) + "</td>\n";
@@ -43,15 +44,15 @@
 			})
 		}, 1500);
 
-	function ajaxCall(url, method, resultFn) {
-    	$.ajax({
-        	method: method,
-        	url: url,
-        	cache: false,
-    	}).done(function(results) {
-        	resultFn(results);
-    	});
-	}
+		function ajaxCall(url, method, resultFn) {
+			$.ajax({
+				method: method,
+				url: url,
+				cache: false,
+			}).done(function (results) {
+				resultFn(results);
+			});
+		}
 
 		var chartColors = {
 			red: 'rgb(255, 99, 132)',
@@ -64,14 +65,14 @@
 		};
 
 		function onRefresh() {
-			config.data.datasets.forEach(function(dataset) {
-				ajaxCall("/i/energy", "GET", function(respData) {
-					for (var i=0; i < respData.length; i++) {
-						console.log("timestamp: "+new Date(respData[i].doc.timestamp))
-							dataset.data.push({
-								x: moment(respData[i].doc.timestamp),
-								y: respData[i].doc.energyTotal
-							});
+			config.data.datasets.forEach(function (dataset) {
+				ajaxCall("/i/energy", "GET", function (respData) {
+					for (var i = 0; i < respData.length; i++) {
+						console.log("timestamp: " + new Date(respData[i].doc.timestamp))
+						dataset.data.push({
+							x: moment(respData[i].doc.timestamp),
+							y: respData[i].doc.energyTotal
+						});
 					}
 				});
 			});
@@ -129,7 +130,7 @@
 			}
 		};
 
-		window.onload = function() {
+		window.onload = function () {
 			var ctx = document.getElementById('canvas').getContext('2d');
 			window.myLine = new Chart(ctx, config);
 		};
